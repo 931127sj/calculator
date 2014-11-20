@@ -1,0 +1,122 @@
+
+stack.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <createStack>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	48 83 ec 10          	sub    $0x10,%rsp
+   8:	bf 10 00 00 00       	mov    $0x10,%edi
+   d:	e8 00 00 00 00       	callq  12 <createStack+0x12>
+  12:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  16:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  1a:	c7 00 00 00 00 00    	movl   $0x0,(%rax)
+  20:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  24:	48 c7 40 08 00 00 00 	movq   $0x0,0x8(%rax)
+  2b:	00 
+  2c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  30:	c9                   	leaveq 
+  31:	c3                   	retq   
+
+0000000000000032 <pop>:
+  32:	55                   	push   %rbp
+  33:	48 89 e5             	mov    %rsp,%rbp
+  36:	48 83 ec 20          	sub    $0x20,%rsp
+  3a:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+  3e:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  42:	48 8b 40 08          	mov    0x8(%rax),%rax
+  46:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  4a:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  4e:	8b 00                	mov    (%rax),%eax
+  50:	85 c0                	test   %eax,%eax
+  52:	75 12                	jne    66 <pop+0x34>
+  54:	bf 00 00 00 00       	mov    $0x0,%edi
+  59:	b8 00 00 00 00       	mov    $0x0,%eax
+  5e:	e8 00 00 00 00       	callq  63 <pop+0x31>
+  63:	90                   	nop
+  64:	eb 37                	jmp    9d <pop+0x6b>
+  66:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  6a:	8b 00                	mov    (%rax),%eax
+  6c:	89 45 f4             	mov    %eax,-0xc(%rbp)
+  6f:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  73:	48 8b 50 08          	mov    0x8(%rax),%rdx
+  77:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  7b:	48 89 50 08          	mov    %rdx,0x8(%rax)
+  7f:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  83:	48 89 c7             	mov    %rax,%rdi
+  86:	e8 00 00 00 00       	callq  8b <pop+0x59>
+  8b:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  8f:	8b 00                	mov    (%rax),%eax
+  91:	8d 50 ff             	lea    -0x1(%rax),%edx
+  94:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  98:	89 10                	mov    %edx,(%rax)
+  9a:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  9d:	c9                   	leaveq 
+  9e:	c3                   	retq   
+
+000000000000009f <push>:
+  9f:	55                   	push   %rbp
+  a0:	48 89 e5             	mov    %rsp,%rbp
+  a3:	48 83 ec 20          	sub    $0x20,%rsp
+  a7:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+  ab:	89 75 e4             	mov    %esi,-0x1c(%rbp)
+  ae:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  b2:	8b 00                	mov    (%rax),%eax
+  b4:	85 c0                	test   %eax,%eax
+  b6:	75 31                	jne    e9 <push+0x4a>
+  b8:	bf 10 00 00 00       	mov    $0x10,%edi
+  bd:	e8 00 00 00 00       	callq  c2 <push+0x23>
+  c2:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+  c6:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  ca:	48 c7 40 08 00 00 00 	movq   $0x0,0x8(%rax)
+  d1:	00 
+  d2:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  d6:	8b 55 e4             	mov    -0x1c(%rbp),%edx
+  d9:	89 10                	mov    %edx,(%rax)
+  db:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  df:	48 8b 55 f0          	mov    -0x10(%rbp),%rdx
+  e3:	48 89 50 08          	mov    %rdx,0x8(%rax)
+  e7:	eb 33                	jmp    11c <push+0x7d>
+  e9:	bf 10 00 00 00       	mov    $0x10,%edi
+  ee:	e8 00 00 00 00       	callq  f3 <push+0x54>
+  f3:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  f7:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  fb:	48 8b 50 08          	mov    0x8(%rax),%rdx
+  ff:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+ 103:	48 89 50 08          	mov    %rdx,0x8(%rax)
+ 107:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+ 10b:	8b 55 e4             	mov    -0x1c(%rbp),%edx
+ 10e:	89 10                	mov    %edx,(%rax)
+ 110:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 114:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+ 118:	48 89 50 08          	mov    %rdx,0x8(%rax)
+ 11c:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 120:	8b 00                	mov    (%rax),%eax
+ 122:	8d 50 01             	lea    0x1(%rax),%edx
+ 125:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 129:	89 10                	mov    %edx,(%rax)
+ 12b:	90                   	nop
+ 12c:	c9                   	leaveq 
+ 12d:	c3                   	retq   
+
+000000000000012e <stackTop>:
+ 12e:	55                   	push   %rbp
+ 12f:	48 89 e5             	mov    %rsp,%rbp
+ 132:	48 83 ec 10          	sub    $0x10,%rsp
+ 136:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+ 13a:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+ 13e:	8b 00                	mov    (%rax),%eax
+ 140:	85 c0                	test   %eax,%eax
+ 142:	75 12                	jne    156 <stackTop+0x28>
+ 144:	bf 00 00 00 00       	mov    $0x0,%edi
+ 149:	b8 00 00 00 00       	mov    $0x0,%eax
+ 14e:	e8 00 00 00 00       	callq  153 <stackTop+0x25>
+ 153:	90                   	nop
+ 154:	eb 0a                	jmp    160 <stackTop+0x32>
+ 156:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+ 15a:	48 8b 40 08          	mov    0x8(%rax),%rax
+ 15e:	8b 00                	mov    (%rax),%eax
+ 160:	c9                   	leaveq 
+ 161:	c3                   	retq   
