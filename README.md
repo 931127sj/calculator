@@ -3,12 +3,12 @@ CALCULATOR
 
 system programming assignment
 
-WRITER
+WRITER<br>
    Kwon sunjin in DKU MSE
 
-WHAT IS THIS?
+WHAT IS THIS?<br>
    Input  : Equation from user
    Output : Equation -> Postfix -> Result
 
-COMPILING:
+COMPILING<br>
    make
